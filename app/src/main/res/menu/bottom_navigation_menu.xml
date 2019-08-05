@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/userFragment"
+        android:title="user"
+        android:icon="@drawable/ic_user"/>
+    <item
+        android:id="@+id/QRcodeFragment"
+        android:title="scan"
+        android:icon="@drawable/ic_scan"/>
+    <item
+        android:id="@+id/listFragment"
+        android:title="list"
+        android:icon="@drawable/ic_list"/>
+
+
+
+</menu>

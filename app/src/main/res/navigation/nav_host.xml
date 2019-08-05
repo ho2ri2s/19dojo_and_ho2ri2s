@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_host"
+            app:startDestination="@id/listFragment">
+
+    <fragment
+            android:id="@+id/listFragment"
+            android:name="jp.co.cyberagent.dojo2019.ui.list.ListFragment"
+            android:label="fragment_list"
+            tools:layout="@layout/fragment_list">
+        <action
+                android:id="@+id/actionUserFragment"
+                app:destination="@id/userFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/QRcodeFragment"
+            android:name="jp.co.cyberagent.dojo2019.ui.qrcode.QRcodeFragment"
+            android:label="fragment_qrcode"
+            tools:layout="@layout/fragment_qrcode">
+        <action
+                android:id="@+id/actionUserFragment"
+                app:destination="@id/listFragment"/>
+    </fragment>
+    <fragment
+            android:id="@+id/userFragment"
+            android:name="jp.co.cyberagent.dojo2019.ui.user.UserFragment"
+            android:label="fragment_user"
+            tools:layout="@layout/fragment_user">
+        <action
+                android:id="@+id/actionQRcodeFragment"
+                app:destination="@id/QRcodeFragment"/>
+    </fragment>
+</navigation>
