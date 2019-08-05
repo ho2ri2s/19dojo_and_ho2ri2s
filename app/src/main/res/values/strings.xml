@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Dojo2019</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">Cyber QR Reader App</string>
+    <string name="description">This App is ......</string>
+    <string name="button_profile">SAVE PROFILE</string>
 </resources>
