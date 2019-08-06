@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.cyberagent.dojo2019.R
-import jp.co.cyberagent.dojo2019.data.User
+import jp.co.cyberagent.dojo2019.data.entity.User
 import kotlinx.android.synthetic.main.list_item.view.*
 
 class ListAdapter(
