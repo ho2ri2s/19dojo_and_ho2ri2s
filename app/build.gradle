@@ -36,7 +36,7 @@ def rxJavaVersion = '2.1.1'
 def roomVersion = '2.1.0-rc01'
 def navVersion = "2.0.0"
 def coroutineVersion = '1.0.0-RC1'
-def daggerVersion = '2.14.1'
+def daggerVersion = '2.16'
 
 
 dependencies {

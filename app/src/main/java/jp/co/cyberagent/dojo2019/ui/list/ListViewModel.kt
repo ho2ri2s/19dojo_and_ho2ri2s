@@ -1,5 +1,7 @@
 package jp.co.cyberagent.dojo2019.ui.list
 
-class ListViewModel{
+import androidx.lifecycle.ViewModel
+
+class ListViewModel: ViewModel(){
 
 }

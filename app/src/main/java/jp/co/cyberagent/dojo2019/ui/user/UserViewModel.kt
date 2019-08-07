@@ -1,4 +1,6 @@
 package jp.co.cyberagent.dojo2019.ui.user
 
-class UserViewModel {
+import androidx.lifecycle.ViewModel
+
+class UserViewModel: ViewModel(){
 }
