@@ -23,7 +23,7 @@ class RoomModule {
 
     @Singleton
     @Provides
-    fun userDao(dojoDatabase: DojoDatabase) = dojoDatabase.userDao()
+    fun userDao(dojoDatabase: DojoDatabase): UserDao = dojoDatabase.userDao()
 
     @Singleton
     @Provides
