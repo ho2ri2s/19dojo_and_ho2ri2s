@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import jp.co.cyberagent.dojo2019.data.entity.User
 import javax.inject.Inject
 
-@Database(entities = arrayOf(User::class), version = 1)
+@Database(entities = arrayOf(User::class), version = 1, exportSchema = false)
 abstract class DojoDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
 }

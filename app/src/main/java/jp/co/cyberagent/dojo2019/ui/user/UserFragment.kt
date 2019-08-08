@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import jp.co.cyberagent.dojo2019.R
+import kotlin.concurrent.thread
 
 
 class UserFragment : Fragment() {

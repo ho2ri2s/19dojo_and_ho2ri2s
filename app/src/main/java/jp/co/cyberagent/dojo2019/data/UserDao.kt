@@ -13,8 +13,8 @@ interface UserDao {
     fun upsertUser(user: User)
 
     @Query("SELECT * FROM user")
-    fun getAllUser(): LiveData<List<User>>
+    fun getAllUsers(): LiveData<List<User>>
 
     @Query("SELECT * FROM user WHERE name = :name OR githubAccount = :githubAccount OR twitterAccount = :twitterAccount")
-    fun getSearchedUser(name: String?, githubAccount: String, twitterAccount: String?): LiveData<List<User>>
+    fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?): LiveData<List<User>>
 }
