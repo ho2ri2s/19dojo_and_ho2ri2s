@@ -1,6 +1,7 @@
 package jp.co.cyberagent.dojo2019.data.repository
 
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.LiveData
 import jp.co.cyberagent.dojo2019.data.UserDao
 import jp.co.cyberagent.dojo2019.data.entity.User
@@ -39,15 +40,21 @@ class UserRepositoryImpl @Inject constructor(
         sharedPreferences.getString(MY_TWITTER_ACCOUNT, "")
 
     override fun writeName(name: String?) {
-        sharedPreferences.edit().putString(MY_NAME, name)
+        val editor = sharedPreferences.edit()
+        editor.putString(MY_NAME, name)
+        editor.apply()
     }
 
     override fun writeGithubAccount(githubAccount: String) {
-        sharedPreferences.edit().putString(MY_GITHUB_ACCOUNT, githubAccount)
+        val editor = sharedPreferences.edit()
+        editor.putString(MY_GITHUB_ACCOUNT, githubAccount)
+        editor.apply()
     }
 
     override fun writeTwitterAccount(twitterAccount: String?) {
-        sharedPreferences.edit().putString(MY_TWITTER_ACCOUNT, twitterAccount)
+        val editor = sharedPreferences.edit()
+        editor.putString(MY_TWITTER_ACCOUNT, twitterAccount)
+        editor.apply()
     }
 
 }

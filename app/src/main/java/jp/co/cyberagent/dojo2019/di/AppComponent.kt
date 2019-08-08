@@ -24,6 +24,6 @@ import javax.inject.Singleton
 interface AppComponent : AndroidInjector<App> {
 
     @Component.Builder
-    abstract class Bilder : AndroidInjector.Builder<App>()
+    abstract class Builder : AndroidInjector.Builder<App>()
 
 }

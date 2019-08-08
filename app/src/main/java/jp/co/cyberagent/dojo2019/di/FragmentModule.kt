@@ -12,14 +12,14 @@ import jp.co.cyberagent.dojo2019.ui.user.UserFragment
 @Module
 abstract class FragmentModule {
     @FragmentScope
-    @ContributesAndroidInjector(modules = [ViewModelModule::class])
+    @ContributesAndroidInjector
     internal abstract fun listFragment(): ListFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [ViewModelModule::class])
+    @ContributesAndroidInjector
     internal abstract fun qrcodeFragment(): QRcodeFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [ViewModelModule::class])
+    @ContributesAndroidInjector
     internal abstract fun userFragment(): UserFragment
 }

@@ -1,6 +1,8 @@
 package jp.co.cyberagent.dojo2019.di
 
+import android.app.Application
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
@@ -16,8 +18,8 @@ class RoomModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(context: Context) = Room.databaseBuilder(
-        context.applicationContext,
+    fun provideDatabase(application: Application) = Room.databaseBuilder(
+        application.applicationContext,
         DojoDatabase::class.java, "cyber_tech_dojo.db"
     )
         .build()
@@ -28,5 +30,6 @@ class RoomModule {
 
     @Singleton
     @Provides
-    fun userRepository(userDao: UserDao): UserRepository = UserRepositoryImpl(userDao)
+    fun userRepository(userDao: UserDao, sharedPreferences: SharedPreferences): UserRepository =
+        UserRepositoryImpl(userDao, sharedPreferences)
 }
