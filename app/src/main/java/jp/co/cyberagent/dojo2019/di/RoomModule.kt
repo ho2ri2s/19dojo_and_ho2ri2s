@@ -1,5 +1,6 @@
 package jp.co.cyberagent.dojo2019.di
 
+import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
@@ -17,8 +18,8 @@ class RoomModule {
 
     @Singleton
     @Provides
-    fun provideDatabase(context: Context) = Room.databaseBuilder(
-        context.applicationContext,
+    fun provideDatabase(application: Application) = Room.databaseBuilder(
+        application.applicationContext,
         DojoDatabase::class.java, "cyber_tech_dojo.db"
     )
         .build()

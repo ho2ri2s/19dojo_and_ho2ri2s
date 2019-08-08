@@ -53,6 +53,7 @@ class UserFragment : DaggerFragment() {
             edtTwiAccount.setText(it)
         })
         btnSave.setOnClickListener {
+
             viewModel.saveMyInfo(edtName.text.toString(), edtGitAccount.text.toString(), edtTwiAccount.text.toString())
             val action = UserFragmentDirections.actionQRcodeFragment()
             Navigation.findNavController(it).navigate(action)

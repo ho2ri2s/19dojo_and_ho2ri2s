@@ -16,6 +16,7 @@ class UserViewModel @Inject constructor(
     val twitterAccount by lazy { MutableLiveData<String>() }
 
     fun saveMyInfo(name: String?, githubAccount: String, twitterAccount: String?){
+
         userRepository.writeName(name)
         userRepository.writeGithubAccount(githubAccount)
         userRepository.writeTwitterAccount(twitterAccount)
