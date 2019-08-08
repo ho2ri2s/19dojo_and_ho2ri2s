@@ -1,5 +1,6 @@
 package jp.co.cyberagent.dojo2019.di
 
+import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import dagger.Module
@@ -17,6 +18,6 @@ class PreferencesModule {
 
     @Singleton
     @Provides
-    fun provideSharedPreferences(application: App): SharedPreferences =
+    fun provideSharedPreferences(application: Application): SharedPreferences =
         application.getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE)
 }

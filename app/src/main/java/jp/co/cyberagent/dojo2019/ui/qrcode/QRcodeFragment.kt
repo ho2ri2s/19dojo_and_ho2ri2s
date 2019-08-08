@@ -7,14 +7,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import dagger.android.support.DaggerFragment
 
 import jp.co.cyberagent.dojo2019.R
+import jp.co.cyberagent.dojo2019.di.ViewModelFactory
+import kotlinx.android.synthetic.main.fragment_qrcode.*
+import javax.inject.Inject
 
 
-class QRcodeFragment : Fragment() {
+class QRcodeFragment : DaggerFragment() {
+
+
+    private lateinit var viewModel: QRcodeViewModel
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(QRcodeViewModel::class.java)
 
     }
 
@@ -24,5 +37,20 @@ class QRcodeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_qrcode, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getMyProfile()
+        viewModel.name.observe(this, Observer {
+            txtUser.text = it
+        })
+        viewModel.githubAccount.observe(this, Observer {
+            txtGitAccount.text = it
+        })
+        viewModel.twitterAccount.observe(this, Observer {
+            txtTwiAccount.text = it
+        })
+
     }
 }

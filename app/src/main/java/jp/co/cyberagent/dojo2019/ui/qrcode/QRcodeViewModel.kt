@@ -20,9 +20,9 @@ class QRcodeViewModel @Inject constructor(
     }
 
     fun getMyProfile(){
-//        name.value = userRepository.getMyName()
-//        githubAccount.value = userRepository.getGithubAccount()
-//        twitterAccount.value = userRepository.getTwitterAccount()
+        name.value = userRepository.readName()
+        githubAccount.value = userRepository.readGithubAccount()
+        twitterAccount.value = userRepository.readTwitterAccount()
     }
 
 }
