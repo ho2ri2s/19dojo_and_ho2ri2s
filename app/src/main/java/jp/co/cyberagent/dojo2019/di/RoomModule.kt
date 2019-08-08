@@ -18,7 +18,8 @@ class RoomModule {
     @Provides
     fun provideDatabase(context: Context) = Room.databaseBuilder(
         context.applicationContext,
-        DojoDatabase::class.java, "cyber_tech_dojo.db")
+        DojoDatabase::class.java, "cyber_tech_dojo.db"
+    )
         .build()
 
     @Singleton
