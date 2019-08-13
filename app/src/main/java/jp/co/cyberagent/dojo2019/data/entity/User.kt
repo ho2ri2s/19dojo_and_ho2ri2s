@@ -12,5 +12,5 @@ class User (
     var twitterAccount: String?
 ){
     @PrimaryKey(autoGenerate = true)
-    var id: Long = 0
+    var id: Long? = null
 }

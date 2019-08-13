@@ -1,5 +1,6 @@
 package jp.co.cyberagent.dojo2019.ui.list
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import jp.co.cyberagent.dojo2019.data.entity.User
@@ -9,16 +10,12 @@ import kotlin.concurrent.thread
 
 class ListViewModel @Inject constructor(
     val userRepository: UserRepository
-) : ViewModel(){
+) : ViewModel() {
 
-    val userList by lazy { MutableLiveData<List<User>>() }
+    //Roomが作ったLiveData（初めは空）を受け取っている。
+    val userList = userRepository.getAllUsers()
 
-    fun getAllUsers(){
-            userList.value = userRepository.getAllUsers().value
-    }
+//    val searchedUserList = userRepository.getSearchedUsers(name, githubAccount, twitterAccount)
 
-    fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?){
-        userList.value =  userRepository.getSearchedUsers(name, githubAccount, twitterAccount).value
-    }
 
 }

@@ -1,8 +1,8 @@
 package jp.co.cyberagent.dojo2019.di
 
-import androidx.fragment.app.ListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import jp.co.cyberagent.dojo2019.ui.list.ListFragment
 import jp.co.cyberagent.dojo2019.ui.qrcode.QRcodeFragment
 import jp.co.cyberagent.dojo2019.ui.user.UserFragment
 

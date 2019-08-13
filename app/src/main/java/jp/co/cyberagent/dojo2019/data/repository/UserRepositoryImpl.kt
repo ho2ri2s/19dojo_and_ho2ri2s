@@ -20,7 +20,6 @@ class UserRepositoryImpl @Inject constructor(
 
     override fun upsertUser(user: User) {
         userDao.upsertUser(user)
-        Log.d("TAG", "repo" + user.githubAccount + user.name + user.twitterAccount)
     }
 
     override  fun getAllUsers(): LiveData<List<User>> {
