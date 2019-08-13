@@ -29,6 +29,12 @@ class ListAdapter(
         holder.view.txtTwiAccount.text = user.twitterAccount
     }
 
+    fun updateUserList(newUserList: List<User>){
+        userList.clear()
+        userList.addAll(newUserList)
+        notifyDataSetChanged()
+    }
+
     class UserViewHolder(var view: View): RecyclerView.ViewHolder(view)
 
 }

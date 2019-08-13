@@ -5,10 +5,12 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "user")
-data class User (
+class User (
+
+    var name: String?,
+    var githubAccount: String,
+    var twitterAccount: String?
+){
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
-    val name: String?,
-    val githubAccount: String,
-    val twitterAccount: String?
-)
+    var id: Long? = null
+}
