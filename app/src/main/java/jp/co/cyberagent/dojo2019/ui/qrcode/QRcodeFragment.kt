@@ -1,9 +1,12 @@
 package jp.co.cyberagent.dojo2019.ui.qrcode
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,10 +18,12 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 import dagger.android.support.DaggerFragment
 
 import jp.co.cyberagent.dojo2019.R
+import jp.co.cyberagent.dojo2019.data.entity.User
 import jp.co.cyberagent.dojo2019.di.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_qrcode.*
 import java.lang.Exception
 import javax.inject.Inject
+import kotlin.concurrent.thread
 
 
 class QRcodeFragment : DaggerFragment() {
@@ -62,6 +67,34 @@ class QRcodeFragment : DaggerFragment() {
             imgQRCode.setImageBitmap(bitmap)
         }catch (e: Exception){
             e.printStackTrace()
+        }
+        fab.setOnClickListener {
+            try {
+                val intent: Intent = Intent("com.google.zxing.client.android.SCAN")
+                intent.putExtra("SCAN_MODE", "QR_CODE_MODE")
+                startActivityForResult(intent, 0)
+            }catch (e: Exception){
+                val marketUri: Uri = Uri.parse("market://details?id=com.google.zxing.client.android")
+                val marketIntent: Intent = Intent(Intent.ACTION_VIEW, marketUri)
+                startActivity(marketIntent)
+            }
+
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 0){
+            if (resultCode == Activity.RESULT_OK){
+                val contents = data?.getStringExtra("SCAN_RESULT")
+                val uri = Uri.parse(contents)
+                val iam = uri.getQueryParameter("iam")
+                val tw = uri.getQueryParameter("tw")
+                val gh = uri.getQueryParameter("gh")
+                thread {
+                    viewModel.upsertUser(User(0, iam, gh!!, tw))
+                }
+            }
         }
     }
 }
