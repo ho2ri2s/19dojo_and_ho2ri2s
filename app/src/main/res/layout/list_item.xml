@@ -41,7 +41,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text="ho2ri2s"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp"
+                    android:tag="github.com"/>
         </LinearLayout>
 
         <LinearLayout
@@ -62,7 +63,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text="ho2ri2s"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp"
+                    android:tag="twitter.com"/>
 
         </LinearLayout>
 
