@@ -14,10 +14,7 @@ class ListViewModel @Inject constructor(
     val userList by lazy { MutableLiveData<List<User>>() }
 
     fun getAllUsers(){
-        //ひとまずCotoutine等使わず実装
-        thread {
             userList.value = userRepository.getAllUsers().value
-        }
     }
 
     fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?){
