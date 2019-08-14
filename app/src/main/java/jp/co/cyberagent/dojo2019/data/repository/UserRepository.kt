@@ -1,15 +1,15 @@
 package jp.co.cyberagent.dojo2019.data.repository
 
 import androidx.lifecycle.LiveData
-import jp.co.cyberagent.dojo2019.data.entity.User
+import jp.co.cyberagent.dojo2019.data.db.entity.User
 
 interface UserRepository {
 
-    fun upsertUser(user: User)
+    suspend fun upsertUser(user: User)
 
-    fun getAllUsers(): LiveData<List<User>>
+    suspend fun getAllUsers(): List<User>
 
-    fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?): LiveData<List<User>>
+    suspend fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?): List<User>
 
     fun readName(): String?
 

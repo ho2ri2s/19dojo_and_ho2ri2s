@@ -18,9 +18,12 @@ import com.journeyapps.barcodescanner.BarcodeEncoder
 import dagger.android.support.DaggerFragment
 
 import jp.co.cyberagent.dojo2019.R
-import jp.co.cyberagent.dojo2019.data.entity.User
+import jp.co.cyberagent.dojo2019.data.db.entity.User
 import jp.co.cyberagent.dojo2019.di.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_qrcode.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
 import kotlin.concurrent.thread
@@ -63,9 +66,10 @@ class QRcodeFragment : DaggerFragment() {
         })
         try {
             val barcodeEncoder = BarcodeEncoder()
-            val bitmap: Bitmap = barcodeEncoder.encodeBitmap(viewModel.builder.build().toString(), BarcodeFormat.QR_CODE, 500, 500)
+            val bitmap: Bitmap =
+                barcodeEncoder.encodeBitmap(viewModel.builder.build().toString(), BarcodeFormat.QR_CODE, 500, 500)
             imgQRCode.setImageBitmap(bitmap)
-        }catch (e: Exception){
+        } catch (e: Exception) {
             e.printStackTrace()
         }
         fab.setOnClickListener {
@@ -73,7 +77,7 @@ class QRcodeFragment : DaggerFragment() {
                 val intent: Intent = Intent("com.google.zxing.client.android.SCAN")
                 intent.putExtra("SCAN_MODE", "QR_CODE_MODE")
                 startActivityForResult(intent, 0)
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 val marketUri: Uri = Uri.parse("market://details?id=com.google.zxing.client.android")
                 val marketIntent: Intent = Intent(Intent.ACTION_VIEW, marketUri)
                 startActivity(marketIntent)
@@ -84,16 +88,15 @@ class QRcodeFragment : DaggerFragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(requestCode == 0){
-            if (resultCode == Activity.RESULT_OK){
+        if (requestCode == 0) {
+            if (resultCode == Activity.RESULT_OK) {
                 val contents = data?.getStringExtra("SCAN_RESULT")
                 val uri = Uri.parse(contents)
                 val iam = uri.getQueryParameter("iam")
                 val tw = uri.getQueryParameter("tw")
                 val gh = uri.getQueryParameter("gh")
-                thread {
-                    viewModel.upsertUser(User( iam, gh!!, tw))
-                }
+
+                viewModel.upsertUser(User(iam, gh!!, tw))
             }
         }
     }

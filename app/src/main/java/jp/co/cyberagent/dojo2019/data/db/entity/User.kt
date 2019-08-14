@@ -1,4 +1,4 @@
-package jp.co.cyberagent.dojo2019.data.entity
+package jp.co.cyberagent.dojo2019.data.db.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

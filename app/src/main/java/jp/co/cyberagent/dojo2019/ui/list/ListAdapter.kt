@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import jp.co.cyberagent.dojo2019.R
-import jp.co.cyberagent.dojo2019.data.entity.User
+import jp.co.cyberagent.dojo2019.data.db.entity.User
 import kotlinx.android.synthetic.main.fragment_qrcode.view.*
 import kotlinx.android.synthetic.main.list_item.view.*
 import kotlinx.android.synthetic.main.list_item.view.txtGitAccount
