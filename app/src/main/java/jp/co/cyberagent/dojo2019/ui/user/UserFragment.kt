@@ -1,17 +1,13 @@
 package jp.co.cyberagent.dojo2019.ui.user
 
-import android.content.Context
-import android.net.Uri
+
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
-import dagger.android.AndroidInjection
 import dagger.android.support.DaggerFragment
 
 import jp.co.cyberagent.dojo2019.R
@@ -19,7 +15,6 @@ import jp.co.cyberagent.dojo2019.databinding.FragmentUserBinding
 import jp.co.cyberagent.dojo2019.di.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_user.*
 import javax.inject.Inject
-import kotlin.concurrent.thread
 
 
 class UserFragment : DaggerFragment() {
@@ -53,7 +48,7 @@ class UserFragment : DaggerFragment() {
 
         btnSave.setOnClickListener {
 
-            viewModel.saveMyInfo()
+            binding.viewModel?.saveMyInfo()
             val action = UserFragmentDirections.actionQRcodeFragment()
             Navigation.findNavController(it).navigate(action)
         }

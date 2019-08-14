@@ -60,7 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:hint="full name"
-                    android:text="@{viewModel.name}"/>
+                    android:text="@={viewModel.name}"/>
 
             <Space
                     android:layout_width="0dp"
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:hint="github Account"
-                    android:text="@{viewModel.githubAccount}"/>
+                    android:text="@={viewModel.githubAccount}"/>
 
             <Space
                     android:layout_width="0dp"
