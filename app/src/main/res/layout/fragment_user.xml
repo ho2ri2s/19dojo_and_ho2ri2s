@@ -40,47 +40,23 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-        <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
 
-        <EditText
-                android:id="@+id/edtName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:hint="full name"/>
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilName"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-        <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-
-        <EditText
-                android:id="@+id/edtGitAccount"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:hint="github Account"/>
-
-        <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="full name"
+                    android:textColorHint="#ffffff"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/list_frame_style"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
@@ -90,22 +66,50 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-        <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
 
-        <EditText
-                android:id="@+id/edtTwiAccount"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:hint="twitter Account"/>
 
-        <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilGithubAccount"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtGithubAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="github Account"
+                    android:textColorHint="#ffffff"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/list_frame_style"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTwitterAccount"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTwitterAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="twitter Account"
+                    android:textColorHint="#ffffff"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/list_frame_style"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
@@ -127,6 +131,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:text="@string/button_profile"
+                android:background="@drawable/list_frame_style"
+                android:textColor="#ffffff"
                 />
 
         <Space
