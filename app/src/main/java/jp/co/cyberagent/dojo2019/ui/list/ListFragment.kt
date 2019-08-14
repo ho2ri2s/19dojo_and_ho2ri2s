@@ -14,13 +14,22 @@ import jp.co.cyberagent.dojo2019.R
 import jp.co.cyberagent.dojo2019.data.entity.User
 import jp.co.cyberagent.dojo2019.di.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_list.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 
-class ListFragment : DaggerFragment() {
+class ListFragment : DaggerFragment(), CoroutineScope {
 
     private lateinit var viewModel: ListViewModel
     private val listAdapter = ListAdapter(arrayListOf())
+    private lateinit var job: Job
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.Main
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -28,8 +37,10 @@ class ListFragment : DaggerFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
-    }
 
+        //CoroutineContextのJobをインスタンス化
+        job = Job()
+    }
 
 
     override fun onCreateView(
@@ -43,15 +54,28 @@ class ListFragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.userList.observe(this, Observer<List<User>>{list ->
-            list?.let {
-                listAdapter.updateUserList(it)
-            }
-        })
+        //awaitなどのCoroutineビルダーはCoroutineもしくは中断関数(suspend fun)から呼ぶ
+        launch {
+            val userList = viewModel.userList.await()
 
-        recyclerView.apply{
+            userList.observe(this@ListFragment, Observer<List<User>> { list ->
+                list?.let {
+                    listAdapter.updateUserList(it)
+                }
+            })
+        }
+
+
+        recyclerView.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = listAdapter
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        //親Jobをキャンセルすることで全てのcoroutineブロックをキャンセル
+        job.cancel()
+    }
+
 }

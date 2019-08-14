@@ -1,11 +1,9 @@
 package jp.co.cyberagent.dojo2019.ui.user
 
 
-import android.util.Log
-import androidx.databinding.Bindable
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import jp.co.cyberagent.dojo2019.App
 import jp.co.cyberagent.dojo2019.data.repository.UserRepository
 import javax.inject.Inject
 

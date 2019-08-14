@@ -16,7 +16,7 @@ class QRcodeViewModel @Inject constructor(
     val twitterAccount by lazy { MutableLiveData<String>() }
     val builder: Uri.Builder = Uri.Builder()
 
-    fun upsertUser(user: User){
+    suspend fun upsertUser(user: User){
         userRepository.upsertUser(user)
     }
 

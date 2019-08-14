@@ -21,6 +21,9 @@ import jp.co.cyberagent.dojo2019.R
 import jp.co.cyberagent.dojo2019.data.entity.User
 import jp.co.cyberagent.dojo2019.di.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_qrcode.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
 import kotlin.concurrent.thread
@@ -91,7 +94,7 @@ class QRcodeFragment : DaggerFragment() {
                 val iam = uri.getQueryParameter("iam")
                 val tw = uri.getQueryParameter("tw")
                 val gh = uri.getQueryParameter("gh")
-                thread {
+                GlobalScope.launch (Dispatchers.IO){
                     viewModel.upsertUser(User( iam, gh!!, tw))
                 }
             }

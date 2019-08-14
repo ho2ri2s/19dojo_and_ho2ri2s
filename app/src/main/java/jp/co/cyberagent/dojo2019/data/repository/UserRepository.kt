@@ -5,11 +5,11 @@ import jp.co.cyberagent.dojo2019.data.entity.User
 
 interface UserRepository {
 
-    fun upsertUser(user: User)
+    suspend fun upsertUser(user: User)
 
-    fun getAllUsers(): LiveData<List<User>>
+    suspend fun getAllUsers(): LiveData<List<User>>
 
-    fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?): LiveData<List<User>>
+    suspend fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?): LiveData<List<User>>
 
     fun readName(): String?
 
