@@ -1,14 +1,15 @@
 package jp.co.cyberagent.dojo2019.ui.list
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import jp.co.cyberagent.dojo2019.R
 import jp.co.cyberagent.dojo2019.data.db.entity.User
-import kotlinx.android.synthetic.main.fragment_qrcode.view.*
 import kotlinx.android.synthetic.main.list_item.view.*
 import kotlinx.android.synthetic.main.list_item.view.txtGitAccount
 import kotlinx.android.synthetic.main.list_item.view.txtTwiAccount
@@ -53,6 +54,10 @@ class ListAdapter(
             }
         }
 
+        Log.d("TAG", user.githubImage)
+        Glide.with(holder.view)
+            .load(user.githubImage)
+            .into(holder.view.imgGitHub)
     }
 
     fun updateUserList(newUserList: List<User>) {

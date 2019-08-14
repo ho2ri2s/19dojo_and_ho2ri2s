@@ -1,11 +1,10 @@
-package jp.co.cyberagent.dojo2019.di
+package jp.co.cyberagent.dojo2019.di.module
 
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import dagger.Module
 import dagger.Provides
-import jp.co.cyberagent.dojo2019.App
 import javax.inject.Singleton
 
 const val MY_PREFERENCES = "my_preferences"

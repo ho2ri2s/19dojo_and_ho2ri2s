@@ -11,6 +11,7 @@ interface UserRepository {
 
     suspend fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?): List<User>
 
+
     fun readName(): String?
 
     fun readGithubAccount(): String
