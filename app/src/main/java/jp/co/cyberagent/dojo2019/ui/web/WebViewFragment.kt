@@ -37,7 +37,6 @@ class WebViewFragment : Fragment() {
             .authority(host)
             .path(id)
         val url = uri.toString()
-        Log.d("TAG", url)
         webView.apply {
             webViewClient = WebViewClient()
             loadUrl(url)

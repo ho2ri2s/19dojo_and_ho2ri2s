@@ -9,6 +9,7 @@ class User (
 
     var name: String?,
     var githubAccount: String,
+    var githubImage: String,
     var twitterAccount: String?
 ){
     @PrimaryKey(autoGenerate = true)

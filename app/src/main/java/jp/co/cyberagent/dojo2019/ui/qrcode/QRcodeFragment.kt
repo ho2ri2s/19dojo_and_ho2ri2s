@@ -96,7 +96,7 @@ class QRcodeFragment : DaggerFragment() {
                 val tw = uri.getQueryParameter("tw")
                 val gh = uri.getQueryParameter("gh")
 
-                viewModel.upsertUser(User(iam, gh!!, tw))
+                viewModel.upsertUser(User(iam, gh!!, "", tw))
             }
         }
     }

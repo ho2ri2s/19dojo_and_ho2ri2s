@@ -1,4 +1,4 @@
-package jp.co.cyberagent.dojo2019.di
+package jp.co.cyberagent.dojo2019.di.module
 
 
 import android.app.Application
