@@ -5,13 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.android.support.DaggerFragment
 
 import jp.co.cyberagent.dojo2019.R
-import jp.co.cyberagent.dojo2019.data.entity.User
+import jp.co.cyberagent.dojo2019.data.db.entity.User
 import jp.co.cyberagent.dojo2019.di.ViewModelFactory
 import kotlinx.android.synthetic.main.fragment_list.*
 import kotlinx.coroutines.CoroutineScope
@@ -22,24 +23,21 @@ import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 
-class ListFragment : DaggerFragment(), CoroutineScope {
+class ListFragment : DaggerFragment() {
 
     private lateinit var viewModel: ListViewModel
     private val listAdapter = ListAdapter(arrayListOf())
-    private lateinit var job: Job
-
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.Main
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
+
+    lateinit var userList: LiveData<List<User>>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
 
-        //CoroutineContextのJobをインスタンス化
-        job = Job()
     }
 
 
@@ -54,17 +52,14 @@ class ListFragment : DaggerFragment(), CoroutineScope {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //awaitなどのCoroutineビルダーはCoroutineもしくは中断関数(suspend fun)から呼ぶ
-        launch {
-            val userList = viewModel.userList.await()
 
-            userList.observe(this@ListFragment, Observer<List<User>> { list ->
-                list?.let {
-                    listAdapter.updateUserList(it)
-                }
-            })
-        }
+        viewModel.userList.observe(this, Observer<List<User>> { list ->
+            list?.let {
+                listAdapter.updateUserList(it)
+            }
+        })
 
+        viewModel.getAllUsers()
 
         recyclerView.apply {
             layoutManager = GridLayoutManager(context, 2)
@@ -72,10 +67,5 @@ class ListFragment : DaggerFragment(), CoroutineScope {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        //親Jobをキャンセルすることで全てのcoroutineブロックをキャンセル
-        job.cancel()
-    }
 
 }

@@ -1,10 +1,9 @@
 package jp.co.cyberagent.dojo2019.data.repository
 
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.lifecycle.LiveData
-import jp.co.cyberagent.dojo2019.data.UserDao
-import jp.co.cyberagent.dojo2019.data.entity.User
+import jp.co.cyberagent.dojo2019.data.db.UserDao
+import jp.co.cyberagent.dojo2019.data.db.entity.User
 import jp.co.cyberagent.dojo2019.di.MY_GITHUB_ACCOUNT
 import jp.co.cyberagent.dojo2019.di.MY_NAME
 import jp.co.cyberagent.dojo2019.di.MY_TWITTER_ACCOUNT
@@ -25,11 +24,11 @@ class UserRepositoryImpl @Inject constructor(
             userDao.upsertUser(user)
     }
 
-    override suspend fun getAllUsers(): LiveData<List<User>> {
+    override suspend fun getAllUsers(): List<User> {
         return userDao.getAllUsers()
     }
 
-    override suspend fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?): LiveData<List<User>> {
+    override suspend fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?): List<User> {
         return userDao.getSearchedUsers(name, githubAccount, twitterAccount)
     }
 

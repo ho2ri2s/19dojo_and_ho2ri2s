@@ -1,11 +1,8 @@
-package jp.co.cyberagent.dojo2019.data
+package jp.co.cyberagent.dojo2019.data.db
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import jp.co.cyberagent.dojo2019.data.entity.User
-import javax.inject.Inject
+import jp.co.cyberagent.dojo2019.data.db.entity.User
 
 @Database(entities = arrayOf(User::class), version = 1, exportSchema = false)
 abstract class DojoDatabase: RoomDatabase() {

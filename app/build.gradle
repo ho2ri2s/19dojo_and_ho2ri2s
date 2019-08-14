@@ -32,7 +32,6 @@ def supportVersion = '28.0.0'
 def lifeCycleExtensionVersion = '2.0.0-rc01'
 def retrofitVersion = '2.3.0'
 def glideVersion = '4.9.0'
-def rxJavaVersion = '2.1.1'
 def roomVersion = '2.1.0-rc01'
 def navVersion = "2.0.0"
 def coroutineVersion = '1.0.0-RC1'
@@ -63,13 +62,10 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
-    //RxJava
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxJavaVersion"
-
     // Kotlin Android Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0-beta01"
 
     //Glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
@@ -80,7 +76,7 @@ dependencies {
     //Room
     implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
-    implementation "androidx.room:room-rxjava2:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
 
     //dagger

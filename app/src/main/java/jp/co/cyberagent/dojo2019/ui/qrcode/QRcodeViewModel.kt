@@ -3,24 +3,28 @@ package jp.co.cyberagent.dojo2019.ui.qrcode
 import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import jp.co.cyberagent.dojo2019.data.entity.User
+import androidx.lifecycle.viewModelScope
+import jp.co.cyberagent.dojo2019.data.db.entity.User
 import jp.co.cyberagent.dojo2019.data.repository.UserRepository
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class QRcodeViewModel @Inject constructor(
-     val userRepository: UserRepository
-): ViewModel() {
+    val userRepository: UserRepository
+) : ViewModel() {
 
     val name by lazy { MutableLiveData<String>() }
     val githubAccount by lazy { MutableLiveData<String>() }
     val twitterAccount by lazy { MutableLiveData<String>() }
     val builder: Uri.Builder = Uri.Builder()
 
-    suspend fun upsertUser(user: User){
-        userRepository.upsertUser(user)
+    fun upsertUser(user: User) {
+        viewModelScope.launch {
+            userRepository.upsertUser(user)
+        }
     }
 
-    fun getMyProfile(){
+    fun getMyProfile() {
         name.value = userRepository.readName()
         githubAccount.value = userRepository.readGithubAccount()
         twitterAccount.value = userRepository.readTwitterAccount()
