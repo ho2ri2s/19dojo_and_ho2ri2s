@@ -1,6 +1,8 @@
 package jp.co.cyberagent.dojo2019.ui.user
 
 
+import android.util.Log
+import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import jp.co.cyberagent.dojo2019.App
@@ -9,22 +11,28 @@ import javax.inject.Inject
 
 class UserViewModel @Inject constructor(
     val userRepository: UserRepository
-):  ViewModel(){
+) : ViewModel() {
 
-    val name by lazy { MutableLiveData<String>() }
-    val githubAccount by lazy { MutableLiveData<String>() }
-    val twitterAccount by lazy { MutableLiveData<String>() }
+    val error = MutableLiveData<String>()
+    var name = MutableLiveData<String?>()
+    val githubAccount = MutableLiveData<String>()
+    val twitterAccount = MutableLiveData<String>()
 
-    fun saveMyInfo(name: String?, githubAccount: String, twitterAccount: String?){
 
-        userRepository.writeName(name)
-        userRepository.writeGithubAccount(githubAccount)
-        userRepository.writeTwitterAccount(twitterAccount)
+    fun saveMyInfo() {
+
+        userRepository.writeName(name.value)
+        userRepository.writeGithubAccount(githubAccount.value!!)
+        userRepository.writeTwitterAccount(twitterAccount.value)
     }
 
-    fun getMyProfile(){
-        name.value = userRepository.readName()
-        githubAccount.value = userRepository.readGithubAccount()
-        twitterAccount.value = userRepository.readTwitterAccount()
+
+    fun getMyProfile() {
+        //どのThreadでもクラッシュしない
+        name.postValue(userRepository.readName())
+        githubAccount.postValue(userRepository.readGithubAccount())
+        twitterAccount.postValue(userRepository.readTwitterAccount())
     }
+
+
 }
