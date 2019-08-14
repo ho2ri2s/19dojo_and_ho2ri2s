@@ -13,6 +13,9 @@
         <action
                 android:id="@+id/actionUserFragment"
                 app:destination="@id/userFragment"/>
+        <action
+                android:id="@+id/actionWebViewFragment"
+                app:destination="@id/webViewFragment"/>
     </fragment>
     <fragment
             android:id="@+id/QRcodeFragment"
@@ -32,4 +35,19 @@
                 android:id="@+id/actionQRcodeFragment"
                 app:destination="@id/QRcodeFragment"/>
     </fragment>
+    <fragment
+            android:id="@+id/webViewFragment"
+            android:name="jp.co.cyberagent.dojo2019.ui.web.WebViewFragment"
+            android:label="fragment_web"
+            tools:layout="@layout/web_view_fragment">
+        <argument
+                android:name="id"
+                app:argType="string"
+                app:nullable="true"/>
+        <argument
+                android:name="host"
+                app:argType="string"
+                app:nullable="true"/>
+    </fragment>
+
 </navigation>
