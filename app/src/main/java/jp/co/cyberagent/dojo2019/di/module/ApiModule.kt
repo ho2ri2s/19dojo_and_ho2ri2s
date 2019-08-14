@@ -20,7 +20,6 @@ class ApiModule {
         return retrofit2.Retrofit.Builder()
             .baseUrl(GITHUB_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
     }
     @Provides
