@@ -55,17 +55,18 @@
                     android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:textColorHint="#ffffff"
+                    >
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtName"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="full name"
                         android:text="@={viewModel.name}"
-                        android:textColorHint="#ffffff"
                         android:textColor="#ffffff"
-                        android:background="@drawable/list_frame_style"/>
+                        android:background="@drawable/edit_text_style"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -82,7 +83,9 @@
                     android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#ffffff"
+                    >
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtGithubAccount"
@@ -90,9 +93,8 @@
                         android:layout_height="match_parent"
                         android:hint="github Account"
                         android:text="@={viewModel.githubAccount}"
-                        android:textColorHint="#ffffff"
                         android:textColor="#ffffff"
-                        android:background="@drawable/list_frame_style"/>
+                        android:background="@drawable/edit_text_style"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -108,7 +110,9 @@
                     android:layout_marginRight="40dp"
                     android:layout_marginLeft="40dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#ffffff"
+                    >
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtTwitterAccount"
@@ -116,9 +120,8 @@
                         android:layout_height="match_parent"
                         android:hint="twitter Account"
                         android:text="@={viewModel.twitterAccount}"
-                        android:textColorHint="#ffffff"
                         android:textColor="#ffffff"
-                        android:background="@drawable/list_frame_style"/>
+                        android:background="@drawable/edit_text_style"/>
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
