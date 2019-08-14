@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="viewModel"
                 type="jp.co.cyberagent.dojo2019.ui.user.UserViewModel"/>
@@ -20,7 +20,7 @@
                 android:id="@+id/imgLogo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="3"
+                android:layout_weight="2"
                 android:src="@mipmap/ic_launcher_round"
                 android:layout_marginTop="24dp"
                 android:layout_marginRight="60dp"
@@ -49,24 +49,51 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-            <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
 
-            <EditText
-                    android:id="@+id/edtName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="full name"
-                    android:text="@={viewModel.name}"/>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilName"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="full name"
+                        android:text="@={viewModel.name}"
+                        android:textColorHint="#ffffff"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/list_frame_style"/>
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilGithubAccount"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtGithubAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="github Account"
+                        android:text="@={viewModel.githubAccount}"
+                        android:textColorHint="#ffffff"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/list_frame_style"/>
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -75,49 +102,24 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-            <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
 
-            <EditText
-                    android:id="@+id/edtGitAccount"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="github Account"
-                    android:text="@={viewModel.githubAccount}"/>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilTwitterAccount"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-            <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
-            <EditText
-                    android:id="@+id/edtTwiAccount"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="twitter Account"
-                    android:text="@={viewModel.twitterAccount}"/>
-
-            <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtTwitterAccount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="twitter Account"
+                        android:text="@={viewModel.twitterAccount}"
+                        android:textColorHint="#ffffff"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/list_frame_style"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
@@ -139,6 +141,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:text="@string/button_profile"
+                    android:background="@drawable/list_frame_style"
+                    android:textColor="#ffffff"
                     />
 
             <Space
@@ -146,8 +150,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"/>
 
+
         </LinearLayout>
-
-
     </LinearLayout>
 </layout>

@@ -59,10 +59,10 @@ class QRcodeFragment : DaggerFragment() {
             txtUser.text = it
         })
         viewModel.githubAccount.observe(this, Observer {
-            txtGitAccount.text = it
+            txtGithubAccount.text = it
         })
         viewModel.twitterAccount.observe(this, Observer {
-            txtTwiAccount.text = it
+            txtTwitterAccount.text = it
         })
         try {
             val barcodeEncoder = BarcodeEncoder()
