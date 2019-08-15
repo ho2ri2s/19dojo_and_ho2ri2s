@@ -103,8 +103,8 @@ class QRcodeFragment : DaggerFragment() {
                 UserDialogFragment.newInstance(iam!!, gh!!, tw!!)
                     .show(fragmentManager, "add_user")
                 viewModel.dialogOK.observe(this, Observer {
-                    viewModel.upsertUser(User(iam, gh!!, "", tw))
-                    val action = ListFragmentDirections.actionListFragment()
+                    viewModel.upsertUser(User(iam, gh, "", tw))
+                    val action = QRcodeFragmentDirections.actionListFragment()
                     Navigation.findNavController(parentFragment?.view!!).navigate(action)
                 })
                 viewModel.dialogCancel.observe(this, Observer {

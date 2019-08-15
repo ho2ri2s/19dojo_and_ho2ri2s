@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import jp.co.cyberagent.dojo2019.di.ViewModelFactory
 import jp.co.cyberagent.dojo2019.di.ViewModelKey
+import jp.co.cyberagent.dojo2019.ui.detail.DetailViewModel
 import jp.co.cyberagent.dojo2019.ui.list.ListViewModel
 import jp.co.cyberagent.dojo2019.ui.qrcode.QRcodeViewModel
 import jp.co.cyberagent.dojo2019.ui.user.UserViewModel
@@ -31,4 +32,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(UserViewModel::class)
     abstract fun bindUserViewModel(viewModel: UserViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailViewModel::class)
+    abstract fun bindDetailViewModel(viewModel: DetailViewModel): ViewModel
 }

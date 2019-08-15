@@ -14,8 +14,8 @@
                 android:id="@+id/actionListFragment"
                 app:destination="@id/userFragment"/>
         <action
-                android:id="@+id/actionWebViewFragment"
-                app:destination="@id/webViewFragment"/>
+                android:id="@+id/actionDetailFragment"
+                app:destination="@id/detailFragment"/>
     </fragment>
     <fragment
             android:id="@+id/QRcodeFragment"
@@ -48,6 +48,18 @@
                 android:name="host"
                 app:argType="string"
                 app:nullable="true"/>
+    </fragment>
+    <fragment
+            android:id="@+id/detailFragment"
+            android:name="jp.co.cyberagent.dojo2019.ui.detail.DetailFragment"
+            android:label="detail_fragment"
+            tools:layout="@layout/detail_fragment">
+        <action
+                android:id="@+id/actionWebViewFragment"
+                app:destination="@id/webViewFragment"/>
+        <argument
+                android:name="User"
+                app:argType="jp.co.cyberagent.dojo2019.data.db.entity.User"/>
     </fragment>
 
 </navigation>
