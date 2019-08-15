@@ -12,7 +12,7 @@ import jp.co.cyberagent.dojo2019.R
 import jp.co.cyberagent.dojo2019.data.db.entity.User
 import kotlinx.android.synthetic.main.list_item.view.*
 import kotlinx.android.synthetic.main.list_item.view.txtGitAccount
-import kotlinx.android.synthetic.main.list_item.view.txtTwiAccount
+//import kotlinx.android.synthetic.main.list_item.view.txtTwiAccount
 
 class ListAdapter(
     private val userList: ArrayList<User>
@@ -30,7 +30,6 @@ class ListAdapter(
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val user = userList[position]
 
-        holder.view.txtName.text = user.name
         holder.view.txtGitAccount.apply {
             txtGitAccount
             text = user.githubAccount
@@ -43,18 +42,17 @@ class ListAdapter(
                 Navigation.findNavController(it).navigate(R.id.actionWebViewFragment, bundle)
             }
         }
-        holder.view.txtTwiAccount.apply {
-            text = user.twitterAccount
-            setOnClickListener {txtTwiAccount
-                val bundle = Bundle().apply {
-                    putString("id", txtTwiAccount.text.toString())
-                    putString("host", txtTwiAccount.getTag().toString())
-                }
-                Navigation.findNavController(it).navigate(R.id.actionWebViewFragment, bundle)
-            }
-        }
+//        holder.view.txtTwiAccount.apply {
+//            text = user.twitterAccount
+//            setOnClickListener {txtTwiAccount
+//                val bundle = Bundle().apply {
+//                    putString("id", txtTwiAccount.text.toString())
+//                    putString("host", txtTwiAccount.getTag().toString())
+//                }
+//                Navigation.findNavController(it).navigate(R.id.actionWebViewFragment, bundle)
+//            }
+//        }
 
-        Log.d("TAG", user.githubImage)
         Glide.with(holder.view)
             .load(user.githubImage)
             .into(holder.view.imgGitHub)

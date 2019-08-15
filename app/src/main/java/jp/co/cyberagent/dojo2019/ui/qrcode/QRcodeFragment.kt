@@ -11,8 +11,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import dagger.android.support.DaggerFragment
@@ -20,6 +22,8 @@ import dagger.android.support.DaggerFragment
 import jp.co.cyberagent.dojo2019.R
 import jp.co.cyberagent.dojo2019.data.db.entity.User
 import jp.co.cyberagent.dojo2019.di.ViewModelFactory
+import jp.co.cyberagent.dojo2019.ui.MainActivity
+import jp.co.cyberagent.dojo2019.ui.list.ListFragmentDirections
 import kotlinx.android.synthetic.main.fragment_qrcode.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -40,7 +44,7 @@ class QRcodeFragment : DaggerFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, viewModelFactory).get(QRcodeViewModel::class.java)
+        viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(QRcodeViewModel::class.java)
 
     }
 
@@ -96,7 +100,16 @@ class QRcodeFragment : DaggerFragment() {
                 val tw = uri.getQueryParameter("tw")
                 val gh = uri.getQueryParameter("gh")
 
-                viewModel.upsertUser(User(iam, gh!!, "", tw))
+                UserDialogFragment.newInstance(iam!!, gh!!, tw!!)
+                    .show(fragmentManager, "add_user")
+                viewModel.dialogOK.observe(this, Observer {
+                    viewModel.upsertUser(User(iam, gh!!, "", tw))
+                    val action = ListFragmentDirections.actionListFragment()
+                    Navigation.findNavController(parentFragment?.view!!).navigate(action)
+                })
+                viewModel.dialogCancel.observe(this, Observer {
+                    Toast.makeText(this.context, "cancel", Toast.LENGTH_SHORT).show()
+                })
             }
         }
     }

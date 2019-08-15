@@ -13,9 +13,14 @@ class QRcodeViewModel @Inject constructor(
     val userRepository: UserRepository
 ) : ViewModel() {
 
+    //自分のProfile
     val name by lazy { MutableLiveData<String>() }
     val githubAccount by lazy { MutableLiveData<String>() }
     val twitterAccount by lazy { MutableLiveData<String>() }
+    //Dialog周り
+    val dialogOK = MutableLiveData<Unit>()
+    val dialogCancel = MutableLiveData<Unit>()
+
     val builder: Uri.Builder = Uri.Builder()
 
     fun upsertUser(user: User) {
@@ -25,9 +30,9 @@ class QRcodeViewModel @Inject constructor(
     }
 
     fun getMyProfile() {
-        name.value = userRepository.readName()
-        githubAccount.value = userRepository.readGithubAccount()
-        twitterAccount.value = userRepository.readTwitterAccount()
+        name.postValue(userRepository.readName())
+        githubAccount.postValue(userRepository.readGithubAccount())
+        twitterAccount.postValue(userRepository.readTwitterAccount())
         builder.scheme("ca-tech")
             .authority("dojo")
             .path("/share")

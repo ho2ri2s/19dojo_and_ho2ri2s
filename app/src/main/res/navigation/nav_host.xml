@@ -11,7 +11,7 @@
             android:label="fragment_list"
             tools:layout="@layout/fragment_list">
         <action
-                android:id="@+id/actionUserFragment"
+                android:id="@+id/actionListFragment"
                 app:destination="@id/userFragment"/>
         <action
                 android:id="@+id/actionWebViewFragment"
@@ -23,7 +23,7 @@
             android:label="fragment_qrcode"
             tools:layout="@layout/fragment_qrcode">
         <action
-                android:id="@+id/actionUserFragment"
+                android:id="@+id/actionListFragment"
                 app:destination="@id/listFragment"/>
     </fragment>
     <fragment

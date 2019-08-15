@@ -44,16 +44,13 @@ class UserDialogFragment : DaggerAppCompatDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(QRcodeViewModel::class.java)
-        Log.d("TAG", "${viewModel}")
         val builder = AlertDialog.Builder(context)
         builder.setTitle("追加しますか？")
             .setMessage(message)
             .setPositiveButton("追加", { _, _ ->
-                Log.d("TAG", "ositayo")
                 viewModel.dialogOK.postValue(Unit)
             })
             .setNegativeButton("キャンセル", { _, _ ->
-                Log.d("TAG", "kyannseru")
                 viewModel.dialogCancel.postValue(Unit)
             })
         return builder.create()

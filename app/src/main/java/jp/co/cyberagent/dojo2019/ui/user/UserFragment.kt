@@ -34,7 +34,6 @@ class UserFragment : DaggerFragment() {
         //viewModelインスタンス化
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(UserViewModel::class.java)
         //TextInputLayout周り
-        setTextChangedListener(edtGithubAccount, tilGithubAccount)
     }
 
     override fun onCreateView(
@@ -51,6 +50,8 @@ class UserFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getMyProfile()
+
+        setTextChangedListener(edtGithubAccount, tilGithubAccount)
 
         btnSave.setOnClickListener {
             var correctInput = true
