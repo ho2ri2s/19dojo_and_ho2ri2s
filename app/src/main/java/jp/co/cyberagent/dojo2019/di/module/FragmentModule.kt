@@ -3,6 +3,7 @@ package jp.co.cyberagent.dojo2019.di.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import jp.co.cyberagent.dojo2019.di.FragmentScope
+import jp.co.cyberagent.dojo2019.ui.detail.DetailFragment
 import jp.co.cyberagent.dojo2019.ui.list.ListFragment
 import jp.co.cyberagent.dojo2019.ui.qrcode.QRcodeFragment
 import jp.co.cyberagent.dojo2019.ui.qrcode.UserDialogFragment
@@ -28,4 +29,8 @@ abstract class FragmentModule {
     @FragmentScope
     @ContributesAndroidInjector
     internal abstract fun userDialogFragment(): UserDialogFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    internal abstract fun detailFragment(): DetailFragment
 }

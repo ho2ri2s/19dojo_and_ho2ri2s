@@ -7,5 +7,5 @@ import retrofit2.http.Path
 interface ApiService {
 
     @GET("users/{account}")
-    suspend fun fetchGithubUser(@Path("account") account: String): GithubResponse
+    suspend fun fetchGithubUser(@Path("account") account: String?): GithubResponse
 }

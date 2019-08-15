@@ -31,9 +31,6 @@ class ListFragment : DaggerFragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    lateinit var userList: LiveData<List<User>>
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(ListViewModel::class.java)
@@ -62,7 +59,7 @@ class ListFragment : DaggerFragment() {
         viewModel.getAllUsers()
 
         recyclerView.apply {
-            layoutManager = GridLayoutManager(context, 2)
+            layoutManager = GridLayoutManager(context, 3)
             adapter = listAdapter
         }
     }

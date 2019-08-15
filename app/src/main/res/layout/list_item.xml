@@ -4,11 +4,12 @@
 <com.google.android.material.card.MaterialCardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/cardView"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_margin="24dp">
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="8dp">
 
     <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -20,6 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
+                android:layout_marginTop="4dp"
                 android:src="@drawable/github_icon"/>
 
 
@@ -29,7 +31,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="ho2ri2s"
-                android:textSize="28sp"
+                android:textSize="20sp"
                 android:gravity="center"
                 android:textColor="#ffffff"
                 />
