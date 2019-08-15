@@ -42,8 +42,16 @@ class UserRepositoryImpl @Inject constructor(
     }
 
 
-    suspend fun fetchGithubImage(user: User): String =
-        apiService.fetchGithubUser(user.githubAccount).avatarUrl
+    suspend fun fetchGithubImage(user: User): String {
+        lateinit var url: String
+        try {
+            url = apiService.fetchGithubUser(user.githubAccount).avatarUrl
+            return url
+        }catch (e: Exception){
+            e.printStackTrace()
+            return ""
+        }
+    }
 
 
     override fun readName(): String? =

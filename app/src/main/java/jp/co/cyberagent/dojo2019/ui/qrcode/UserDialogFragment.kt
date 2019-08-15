@@ -23,7 +23,7 @@ class UserDialogFragment : DaggerAppCompatDialogFragment() {
 
 
     companion object {
-        fun newInstance(name: String, githubAccount: String, twitterAccount: String): UserDialogFragment {
+        fun newInstance(name: String?, githubAccount: String?, twitterAccount: String?): UserDialogFragment {
             val bundle = Bundle().also {
                 it.putString(
                     "message",
@@ -40,18 +40,21 @@ class UserDialogFragment : DaggerAppCompatDialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         message = arguments?.getString("message") as String
+        viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(QRcodeViewModel::class.java)
+        Log.d("TAG", "dialog  ${viewModel}")
+
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(QRcodeViewModel::class.java)
         val builder = AlertDialog.Builder(context)
         builder.setTitle("追加しますか？")
             .setMessage(message)
             .setPositiveButton("追加", { _, _ ->
-                viewModel.dialogOK.postValue(Unit)
+                viewModel.dialogOK.call(Unit)
+                Log.d("TAG", "dialogok")
             })
             .setNegativeButton("キャンセル", { _, _ ->
-                viewModel.dialogCancel.postValue(Unit)
+                viewModel.dialogCancel.call(Unit)
             })
         return builder.create()
     }

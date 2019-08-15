@@ -40,9 +40,11 @@ class ListAdapter(
             text = user.githubAccount
         }
 
-        Glide.with(holder.view)
-            .load(user.githubImage)
-            .into(holder.view.imgGitHub)
+        if(!user.githubAccount.isNullOrEmpty()){
+            Glide.with(holder.view)
+                .load(user.githubImage)
+                .into(holder.view.imgGitHub)
+        }
     }
 
     fun updateUserList(newUserList: List<User>) {
