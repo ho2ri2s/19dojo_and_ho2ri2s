@@ -1,13 +1,11 @@
 package jp.co.cyberagent.dojo2019.ui.qrcode
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,19 +16,12 @@ import androidx.navigation.Navigation
 import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.BarcodeEncoder
 import dagger.android.support.DaggerFragment
-
 import jp.co.cyberagent.dojo2019.R
 import jp.co.cyberagent.dojo2019.data.db.entity.User
 import jp.co.cyberagent.dojo2019.di.ViewModelFactory
-import jp.co.cyberagent.dojo2019.ui.MainActivity
-import jp.co.cyberagent.dojo2019.ui.list.ListFragmentDirections
 import kotlinx.android.synthetic.main.fragment_qrcode.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
-import kotlin.concurrent.thread
 
 
 class QRcodeFragment : DaggerFragment() {
@@ -40,11 +31,12 @@ class QRcodeFragment : DaggerFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
+    private val user = User("", "", "", "")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(QRcodeViewModel::class.java)
+        Log.d("TAG", "qrfrag ${viewModel}")
 
     }
 
@@ -68,14 +60,34 @@ class QRcodeFragment : DaggerFragment() {
         viewModel.twitterAccount.observe(this, Observer {
             txtTwitterAccount.text = it
         })
+        viewModel.dialogOK.observe(this, "ok", Observer {
+            viewModel.upsertUser(user)
+            Log.d("TAG", "ListViewへ")
+            val action = QRcodeFragmentDirections.actionListFragment()
+            Navigation.findNavController(parentFragment?.view!!).navigate(action)
+        })
+        viewModel.dialogCancel.observe(this, "cancel", Observer {
+            Toast.makeText(this.context, "cancel", Toast.LENGTH_SHORT).show()
+        })
+        val builder = Uri.Builder()
+            .scheme("ca-tech")
+            .authority("dojo")
+            .path("/share")
+            .appendQueryParameter("iam", viewModel.name.value)
+            .appendQueryParameter("gw", viewModel.githubAccount.value)
+            .appendQueryParameter("tw", viewModel.twitterAccount.value)
+
+        //QRコード表示
         try {
+            Log.d("TAG", builder.toString())
             val barcodeEncoder = BarcodeEncoder()
             val bitmap: Bitmap =
-                barcodeEncoder.encodeBitmap(viewModel.builder.build().toString(), BarcodeFormat.QR_CODE, 500, 500)
+                barcodeEncoder.encodeBitmap(builder.build().toString(), BarcodeFormat.QR_CODE, 500, 500)
             imgQRCode.setImageBitmap(bitmap)
         } catch (e: Exception) {
             e.printStackTrace()
         }
+        //QRコードリーダーへ遷移
         fab.setOnClickListener {
             try {
                 val intent: Intent = Intent("com.google.zxing.client.android.SCAN")
@@ -100,17 +112,14 @@ class QRcodeFragment : DaggerFragment() {
                 val tw = uri.getQueryParameter("tw")
                 val gh = uri.getQueryParameter("gh")
 
-                UserDialogFragment.newInstance(iam!!, gh!!, tw!!)
+                user.name = iam
+                user.twitterAccount = tw
+                user.githubAccount = gh
+
+                UserDialogFragment.newInstance(iam, gh, tw)
                     .show(fragmentManager, "add_user")
-                viewModel.dialogOK.observe(this, Observer {
-                    viewModel.upsertUser(User(iam, gh, "", tw))
-                    val action = QRcodeFragmentDirections.actionListFragment()
-                    Navigation.findNavController(parentFragment?.view!!).navigate(action)
-                })
-                viewModel.dialogCancel.observe(this, Observer {
-                    Toast.makeText(this.context, "cancel", Toast.LENGTH_SHORT).show()
-                })
             }
         }
     }
+
 }

@@ -79,10 +79,11 @@ class DetailFragment : DaggerFragment() {
                 Navigation.findNavController(it).navigate(R.id.actionWebViewFragment, bundle)
             }
         }
-        Glide.with(view)
-            .load(user.githubImage)
-            .into(imgGitHub)
-
+        if(!user.githubAccount.isNullOrEmpty()) {
+            Glide.with(view)
+                .load(user.githubImage)
+                .into(imgGitHub)
+        }
 
     }
 }
