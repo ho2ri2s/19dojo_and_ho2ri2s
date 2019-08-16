@@ -1,43 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<com.google.android.material.card.MaterialCardView
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/cardView"
+
+        android:id="@+id/linearLayout"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        android:background="@drawable/blue_roundshape"
+        >
 
-    <LinearLayout
-            android:id="@+id/linearLayout"
+    <ImageView
+            android:id="@+id/imgGitHub"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:background="@drawable/list_frame_style"
-            >
-
-        <ImageView
-                android:id="@+id/imgGitHub"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:layout_marginTop="4dp"
-                android:src="@drawable/github_icon"/>
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/github_icon"/>
 
 
-        <TextView
-                android:id="@+id/txtGitAccount"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="ho2ri2s"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                />
+    <TextView
+            android:id="@+id/txtGitAccount"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="ho2ri2s"
+            android:maxLength="8"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            />
 
-    </LinearLayout>
+</LinearLayout>
 
 
-</com.google.android.material.card.MaterialCardView>
 

@@ -82,7 +82,7 @@ class QRcodeFragment : DaggerFragment() {
             Log.d("TAG", builder.toString())
             val barcodeEncoder = BarcodeEncoder()
             val bitmap: Bitmap =
-                barcodeEncoder.encodeBitmap(builder.build().toString(), BarcodeFormat.QR_CODE, 500, 500)
+                barcodeEncoder.encodeBitmap(builder.build().toString(), BarcodeFormat.QR_CODE, 400, 400)
             imgQRCode.setImageBitmap(bitmap)
         } catch (e: Exception) {
             e.printStackTrace()

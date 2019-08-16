@@ -53,7 +53,7 @@ class UserFragment : DaggerFragment() {
 
         setTextChangedListener(edtGithubAccount, tilGithubAccount)
 
-        btnSave.setOnClickListener {
+        save.setOnClickListener {
             var correctInput = true
             if(edtGithubAccount.text.isNullOrEmpty()){
                 tilGithubAccount.error = "github account is required"

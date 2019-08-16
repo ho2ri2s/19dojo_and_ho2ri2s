@@ -3,7 +3,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/nav_host"
-            app:startDestination="@id/userFragment">
+            app:startDestination="@id/splashFragment">
 
     <fragment
             android:id="@+id/listFragment"
@@ -60,6 +60,15 @@
         <argument
                 android:name="User"
                 app:argType="jp.co.cyberagent.dojo2019.data.db.entity.User"/>
+    </fragment>
+    <fragment
+            android:id="@+id/splashFragment"
+            android:name="jp.co.cyberagent.dojo2019.ui.splash.SplashFragment"
+            android:label="fragment_splash"
+            tools:layout="@layout/fragment_splash">
+        <action
+                android:id="@+id/actionUserFragment"
+                app:destination="@id/userFragment"/>
     </fragment>
 
 </navigation>

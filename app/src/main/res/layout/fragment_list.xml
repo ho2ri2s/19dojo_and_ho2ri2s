@@ -28,9 +28,10 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:src="@drawable/github_icon"
                 android:layout_gravity="center"
-                android:scaleType="fitStart"/>
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/ic_search"
+                />
 
         <EditText
                 android:id="@+id/edtSearch"
