@@ -9,151 +9,225 @@
                 type="jp.co.cyberagent.dojo2019.ui.user.UserViewModel"/>
     </data>
 
-    <LinearLayout
-
+    <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".ui.user.UserFragment"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-        <ImageView
-                android:id="@+id/imgLogo"
+        <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:src="@drawable/cyberapplogo"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="60dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginBottom="16dp"/>
-
-        <TextView
-                android:id="@+id/txtTitle"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:text="@string/title"
-                android:textSize="30sp"
-                android:gravity="center"/>
-
-        <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/description"
-                android:gravity="center"/>
+                android:layout_height="150dp"
+                android:background="@drawable/blue_bg"/>
 
         <LinearLayout
+
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                tools:context=".ui.user.UserFragment"
+                android:orientation="vertical">
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilName"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textColorHint="#ffffff"
-                    >
-
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="full name"
-                        android:text="@={viewModel.name}"
-                        android:textColor="#ffffff"
-                        android:background="@drawable/edit_text_style"/>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilGithubAccount"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
+            <TextView
+                    android:id="@+id/txtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="#ffffff"
-                    >
-
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtGithubAccount"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="github Account"
-                        android:text="@={viewModel.githubAccount}"
-                        android:textColor="#ffffff"
-                        android:background="@drawable/edit_text_style"/>
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/tilTwitterAccount"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="#ffffff"
-                    >
-
-                <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtTwitterAccount"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:hint="twitter Account"
-                        android:text="@={viewModel.twitterAccount}"
-                        android:textColor="#ffffff"
-                        android:background="@drawable/edit_text_style"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-            <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
-
-            <Button
-                    android:id="@+id/btnSave"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:text="@string/button_profile"
-                    android:background="@drawable/list_frame_style"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/title"
+                    android:textSize="20sp"
                     android:textColor="#ffffff"
+                    android:gravity="center"/>
+
+
+
+            <ImageView
+                    android:id="@+id/imgLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:src="@drawable/cyberapplogo"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginLeft="60dp"
                     />
 
-            <Space
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"/>
+            <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:layout_marginTop="16dp"
+                    android:textColor="#ffffff"
+                    android:textSize="15sp"
+                    android:gravity="center"/>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="14.5dp">
 
+                <View
+                        android:layout_width="5.6dp"
+                        android:layout_height="match_parent"
+                        android:background="#38b5f2"/>
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginRight="35.6dp"
+                        android:background="@drawable/rectangle">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="13dp"
+                            android:layout_marginRight="19dp"
+                            android:orientation="vertical">
+
+
+
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Your name"
+                                android:textColor="#9e9d9d"
+                                android:textSize="12.3sp"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColorHint="#ffffff"
+                                >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:maxLines="1"
+                                    android:textColorHint="#333232"
+                                    android:textCursorDrawable="@drawable/cursor_color"
+                                    android:textSize="15sp"
+                                    android:hint="full name"
+                                    android:textColor="#333232"
+                                    android:text="@={viewModel.name}"
+/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="5dp"
+                                android:background="#9e9e9e"/>
+
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="github account"
+                                android:textColor="#9e9d9d"
+                                android:textSize="12.3sp"/>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilGithubAccount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtGithubAccount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:maxLines="1"
+                                    android:textColor="#333232"
+                                    android:textCursorDrawable="@drawable/cursor_color"
+                                    android:textSize="15sp"
+                                    android:text="@={viewModel.githubAccount}"
+                                    />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="5dp"
+                                android:background="#9e9e9e"/>
+
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="twitter account"
+                                android:textColor="#9e9d9d"
+                                android:textSize="12.3sp"/>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilTwitterAccount"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColorHint="#ffffff"
+                                >
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edtTwitterAccount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="@={viewModel.twitterAccount}"
+                                    android:background="@android:color/transparent"
+                                    android:maxLines="1"
+                                    android:textColor="#333232"
+                                    android:textCursorDrawable="@drawable/cursor_color"
+                                    android:textSize="15sp"
+                                    />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <View
+                                android:id="@+id/view"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="#9e9e9e"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/save"
+                    android:layout_width="90dp"
+                    android:layout_height="41dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/half_blue_roundshape"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Save"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="#ffffff"
+                        android:textSize="15sp"/>
+
+
+            </LinearLayout>
 
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </layout>
