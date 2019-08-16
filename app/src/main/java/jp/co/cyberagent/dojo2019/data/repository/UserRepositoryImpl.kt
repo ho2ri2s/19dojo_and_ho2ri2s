@@ -37,10 +37,13 @@ class UserRepositoryImpl @Inject constructor(
         return@withContext userDao.getAllUsers()
     }
 
-    override suspend fun getSearchedUsers(name: String?, githubAccount: String, twitterAccount: String?): List<User> {
+    override suspend fun getSearchedUsers(name: String?, githubAccount: String?, twitterAccount: String?): List<User> {
         return userDao.getSearchedUsers(name, githubAccount, twitterAccount)
     }
 
+    override suspend fun deleteUser(id: Long?) {
+        userDao.deleteUser(id)
+    }
 
     suspend fun fetchGithubImage(user: User): String {
         lateinit var url: String
