@@ -60,6 +60,9 @@
         <argument
                 android:name="User"
                 app:argType="jp.co.cyberagent.dojo2019.data.db.entity.User"/>
+        <action
+                android:id="@+id/actionListFragment"
+                app:destination="@id/listFragment"/>
     </fragment>
     <fragment
             android:id="@+id/splashFragment"

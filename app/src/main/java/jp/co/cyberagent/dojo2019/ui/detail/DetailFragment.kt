@@ -57,7 +57,6 @@ class DetailFragment : DaggerFragment() {
 
         //clickするとwebViewでgithubサイトへ飛ぶ
         txtGitAccount.apply {
-//            text = user.githubAccount
             setOnClickListener {
                 //idとhostをWebViewFragmentに渡す
                 val bundle = Bundle().apply {
@@ -69,9 +68,7 @@ class DetailFragment : DaggerFragment() {
         }
         //clickするとwebViewでtwitterサイトへ飛ぶ
         txtTwiAccount.apply {
-//            text = user.twitterAccount
             setOnClickListener {
-                txtTwiAccount
                 val bundle = Bundle().apply {
                     putString("id", txtTwiAccount.text.toString())
                     putString("host", txtTwiAccount.getTag().toString())
@@ -79,11 +76,15 @@ class DetailFragment : DaggerFragment() {
                 Navigation.findNavController(it).navigate(R.id.actionWebViewFragment, bundle)
             }
         }
+        btnDelete.setOnClickListener {
+            viewModel.deleteUser(user.id)
+            val action = DetailFragmentDirections.actionListFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
         if(!user.githubAccount.isNullOrEmpty()) {
             Glide.with(view)
                 .load(user.githubImage)
                 .into(imgGitHub)
         }
-
     }
 }
