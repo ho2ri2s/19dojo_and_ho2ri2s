@@ -58,6 +58,12 @@ class ListFragment : DaggerFragment() {
 
         viewModel.getAllUsers()
 
+        imgSearch.setOnClickListener {
+            Log.d("TAG", "edt : ${edtSearch.text.toString()}")
+            viewModel.getSeachedUsers("%${edtSearch.text}%")
+        }
+
+
         recyclerView.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = listAdapter

@@ -9,7 +9,7 @@ interface UserRepository {
 
     suspend fun getAllUsers(): List<User>
 
-    suspend fun getSearchedUsers(name: String?, githubAccount: String?, twitterAccount: String?): List<User>
+    suspend fun getSearchedUsers(keyWord: String?): List<User>
 
     suspend fun deleteUser(id: Long?)
 

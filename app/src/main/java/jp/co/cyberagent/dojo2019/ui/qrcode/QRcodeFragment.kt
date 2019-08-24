@@ -74,8 +74,8 @@ class QRcodeFragment : DaggerFragment() {
             .authority("dojo")
             .path("/share")
             .appendQueryParameter("iam", viewModel.name.value)
-            .appendQueryParameter("gw", viewModel.githubAccount.value)
             .appendQueryParameter("tw", viewModel.twitterAccount.value)
+            .appendQueryParameter("gh", viewModel.githubAccount.value)
 
         //QRコード表示
         try {
