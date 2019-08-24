@@ -24,7 +24,10 @@ class ListViewModel @Inject constructor(
         }
     }
 
-//    val searchedUserList = userRepository.getSearchedUsers(name, githubAccount, twitterAccount)
-
+    fun getSeachedUsers(keyWord: String?){
+        viewModelScope.launch {
+            _userList.postValue(userRepository.getSearchedUsers(keyWord))
+        }
+    }
 
 }

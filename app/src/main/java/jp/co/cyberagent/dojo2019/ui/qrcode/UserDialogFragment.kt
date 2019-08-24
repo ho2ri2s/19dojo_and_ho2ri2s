@@ -3,15 +3,11 @@ package jp.co.cyberagent.dojo2019.ui.qrcode
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.DaggerAppCompatDialogFragment
 import jp.co.cyberagent.dojo2019.di.ViewModelFactory
 import javax.inject.Inject
-import kotlin.random.Random
 
-//TODO DaggerDialogFragmentにしたい
 class UserDialogFragment : DaggerAppCompatDialogFragment() {
 
 
@@ -41,7 +37,6 @@ class UserDialogFragment : DaggerAppCompatDialogFragment() {
         super.onCreate(savedInstanceState)
         message = arguments?.getString("message") as String
         viewModel = ViewModelProviders.of(requireActivity(), viewModelFactory).get(QRcodeViewModel::class.java)
-        Log.d("TAG", "dialog  ${viewModel}")
 
     }
 
@@ -51,7 +46,6 @@ class UserDialogFragment : DaggerAppCompatDialogFragment() {
             .setMessage(message)
             .setPositiveButton("追加", { _, _ ->
                 viewModel.dialogOK.call(Unit)
-                Log.d("TAG", "dialogok")
             })
             .setNegativeButton("キャンセル", { _, _ ->
                 viewModel.dialogCancel.call(Unit)

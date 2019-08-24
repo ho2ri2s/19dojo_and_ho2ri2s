@@ -15,8 +15,8 @@ interface UserDao {
     @Query("SELECT * FROM user")
     suspend fun getAllUsers(): List<User>
 
-    @Query("SELECT * FROM user WHERE name = :name OR githubAccount = :githubAccount OR twitterAccount = :twitterAccount")
-    suspend fun getSearchedUsers(name: String?, githubAccount: String?, twitterAccount: String?): List<User>
+    @Query("SELECT * FROM user WHERE name LIKE :keyWord OR githubAccount LIKE :keyWord OR twitterAccount LIKE :keyWord")
+    suspend fun getSearchedUsers(keyWord: String?): List<User>
 
     @Query("DELETE FROM user WHERE id = :id")
     suspend fun deleteUser(id: Long?)

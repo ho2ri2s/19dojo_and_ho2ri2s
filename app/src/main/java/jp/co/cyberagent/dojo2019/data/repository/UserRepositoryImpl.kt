@@ -37,8 +37,9 @@ class UserRepositoryImpl @Inject constructor(
         return@withContext userDao.getAllUsers()
     }
 
-    override suspend fun getSearchedUsers(name: String?, githubAccount: String?, twitterAccount: String?): List<User> {
-        return userDao.getSearchedUsers(name, githubAccount, twitterAccount)
+    override suspend fun getSearchedUsers(keyWord: String?): List<User> {
+        Log.d("TAG", "repo : ${keyWord}  : ${userDao.getSearchedUsers(keyWord)}")
+        return userDao.getSearchedUsers(keyWord)
     }
 
     override suspend fun deleteUser(id: Long?) {
